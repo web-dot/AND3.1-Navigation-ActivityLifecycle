@@ -30,6 +30,8 @@ import com.example.android.dessertclicker.databinding.ActivityMainBinding
 
 
 const val TAG = "MainActivity"
+const val KEY_REVENUE = "revenue-key"
+const val KEY_DESSERT_SOLD = "dessert_sold_key"
 
 class MainActivity : AppCompatActivity() {
 
@@ -71,6 +73,9 @@ class MainActivity : AppCompatActivity() {
         Log.d(TAG, "onCreate Called")
         // Use Data Binding to get reference to the views
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        if(savedInstanceState != null){
+            revenue = savedInstanceState.getInt(KEY_REVENUE, 0)
+        }
 
         binding.dessertButton.setOnClickListener {
             onDessertClicked()
@@ -116,8 +121,10 @@ class MainActivity : AppCompatActivity() {
         Log.d(TAG, "onRestart Called")
     }
 
-    override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
+    override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
+        outState.putInt(KEY_REVENUE, revenue)
+        outState.putInt(KEY_DESSERT_SOLD, dessertsSold)
 
         Log.d(TAG, "onSaveInstanceState called")
     }
