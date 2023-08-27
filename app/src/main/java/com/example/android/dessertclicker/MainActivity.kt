@@ -116,11 +116,10 @@ class MainActivity : AppCompatActivity() {
         Log.d(TAG, "onRestart called")
     }
 
-    //    override fun onSaveInstanceState(outState: Bundle) {
-//        super.onSaveInstanceState(outState)
-//
-//        Log.d(TAG, "onSaveInstanceState called")
-//    }
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        Log.d(TAG, "onSaveInstance called")
+    }
 
     /**
      * Updates the score when the dessert is clicked. Possibly shows a new dessert.
